@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Módulo de consumo: responsável, cobrança e gatilhos automáticos." />
+  <title>Módulo 01 • Consumo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">FT</span>
+        <span>Fiscal Training Portal</span>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="fornecedor.html">Fornecedor</a>
+        <a href="cliente.html">Cliente</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-panel">
+          <span class="eyebrow">Módulo 01</span>
+          <h1>Consumo</h1>
+          <p>
+            O fluxo mais objetivo do portal. Aqui o jogo gira em torno de identificar o responsável certo e deixar a cobrança correr sem gambiarra.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container layout">
+      <aside class="card sidebar">
+        <h2>Neste módulo</h2>
+        <nav class="sidebar-nav" aria-label="Navegação da página">
+          <a href="#visao-geral">Visão geral</a>
+          <a href="#status-inicial">Status inicial</a>
+          <a href="#fluxo">Fluxo operacional</a>
+          <a href="#gatilhos">Gatilhos automáticos</a>
+          <a href="#encerramento">Encerramento</a>
+        </nav>
+      </aside>
+
+      <div class="content">
+        <section class="card content-card" id="visao-geral">
+          <h2>Visão geral</h2>
+          <div class="kpi-grid">
+            <div class="kpi">
+              <strong>Foco principal</strong>
+              Identificar o responsável pelo fornecedor e destravar a cobrança.
+            </div>
+            <div class="kpi">
+              <strong>Entrada padrão</strong>
+              Nota importada com andamento em <b>Analisar</b>.
+            </div>
+            <div class="kpi">
+              <strong>Saída ideal</strong>
+              Data de entrada preenchida e andamento em <b>Resolvido</b>.
+            </div>
+          </div>
+        </section>
+
+        <section class="card content-card" id="status-inicial">
+          <h2>Status inicial</h2>
+          <div class="meta-grid">
+            <div class="meta-box">
+              <strong>Andamento inicial</strong>
+              <span class="status-badge info">Analisar</span>
+            </div>
+            <div class="meta-box">
+              <strong>Status geral inicial</strong>
+              <span class="status-badge wait">Aguardando Responsável</span>
+            </div>
+          </div>
+          <p>
+            Toda nota de consumo cai na lista nesse estado. O primeiro passo não é adivinhar nem inventar regra: é consultar o CNPJ no Organize e preencher a coluna <b>Responsável</b>.
+          </p>
+        </section>
+
+        <section class="card content-card" id="fluxo">
+          <h2>Fluxo operacional</h2>
+          <ol class="flow">
+            <li data-step="1">
+              <strong>Importação da nota</strong><br />
+              A nota entra na lista com andamento <b>Analisar</b> e status geral <b>Aguardando Responsável</b>.
+            </li>
+            <li data-step="2">
+              <strong>Consulta manual no Organize</strong><br />
+              O operador consulta o CNPJ e identifica quem responde pelo fornecedor.
+            </li>
+            <li data-step="3">
+              <strong>Preenchimento do responsável</strong><br />
+              A coluna <b>Responsável</b> vira a chave do processo. Sem isso, nada anda.
+            </li>
+            <li data-step="4">
+              <strong>Disparo da cobrança</strong><br />
+              O fluxo libera a nota para envio e coloca o processo em trilho automático.
+            </li>
+            <li data-step="5">
+              <strong>Retorno e validação</strong><br />
+              Depois do e-mail, o processo aguarda resposta e segue para validação do retorno.
+            </li>
+          </ol>
+        </section>
+
+        <section class="card content-card" id="gatilhos">
+          <h2>Gatilhos automáticos</h2>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Evento</th>
+                  <th>Resposta do sistema</th>
+                  <th>Efeito prático</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Responsável preenchido</td>
+                  <td>Status geral muda para <b>Responsável Definido</b></td>
+                  <td>Confirma que a nota já tem dono no processo.</td>
+                </tr>
+                <tr>
+                  <td>Responsável preenchido</td>
+                  <td>Tratativa assume <b>Cobrar</b></td>
+                  <td>Formaliza a ação que deve acontecer.</td>
+                </tr>
+                <tr>
+                  <td>Responsável preenchido</td>
+                  <td><b>Pronto para Envio</b> vira verdadeiro</td>
+                  <td>Libera a nota para o fluxo de e-mail.</td>
+                </tr>
+                <tr>
+                  <td>Responsável preenchido</td>
+                  <td>Andamento muda para <b>Aguardando Cobrança</b></td>
+                  <td>O processo sai da análise e entra em execução.</td>
+                </tr>
+                <tr>
+                  <td>E-mail enviado</td>
+                  <td>Data de envio registrada</td>
+                  <td>Cria rastreabilidade. Sem “acho que mandaram”.</td>
+                </tr>
+                <tr>
+                  <td>E-mail enviado</td>
+                  <td>Andamento muda para <b>Aguardando Retorno</b></td>
+                  <td>Agora a bola está do outro lado.</td>
+                </tr>
+                <tr>
+                  <td>Resposta identificada</td>
+                  <td>Status muda para <b>Validar Retorno</b></td>
+                  <td>Hora de conferir se a resposta resolveu algo de verdade.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card content-card" id="encerramento">
+          <h2>Encerramento</h2>
+          <div class="highlight">
+            Quando a nota é incluída no sistema, o fluxo reconhece a <b>chave de acesso</b>, preenche a <b>Data de Entrada</b> e define o andamento como <b>Resolvido</b>. Fim. Sem novela.
+          </div>
+          <p style="margin-top: 20px;">
+            <a class="back-button" href="index.html">← Voltar para a página inicial</a>
+          </p>
+        </section>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
