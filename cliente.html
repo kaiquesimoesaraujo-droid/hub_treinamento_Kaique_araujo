@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Módulo de cliente: integração com SAC por planilha, status padronizados e tratativa fiscal." />
+  <title>Módulo 03 • Cliente</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">FT</span>
+        <span>Fiscal Training Portal</span>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="consumo.html">Consumo</a>
+        <a href="fornecedor.html">Fornecedor</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-panel">
+          <span class="eyebrow">Módulo 03</span>
+          <h1>Cliente</h1>
+          <p>
+            Módulo voltado ao tratamento das notas de cliente, com foco na integração com o SAC, leitura dos retornos da planilha e definição da tratativa fiscal correspondente.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container layout">
+      <aside class="card sidebar">
+        <h2>Neste módulo</h2>
+        <nav class="sidebar-nav" aria-label="Navegação da página">
+          <a href="#ajuste">Notas de ajuste</a>
+          <a href="#integracao">Integração com SAC</a>
+          <a href="#status-ref">Tabela de referência</a>
+          <a href="#matriz-sac">Matriz de decisão</a>
+          <a href="#atualizacao">Processo de atualização</a>
+        </nav>
+      </aside>
+
+      <div class="content">
+        <section class="card content-card" id="ajuste">
+          <h2>Notas de ajuste (estornos)</h2>
+          <div class="highlight warning">
+            Para notas de ajuste, a orientação segue a mesma lógica aplicada ao fluxo de fornecedor: <strong>não manifestar a nota de ajuste</strong>. Deve-se localizar a <strong>NFD referenciada</strong>, realizar a manifestação correspondente e concluir o ajuste na lista de controle.
+          </div>
+        </section>
+
+        <section class="card content-card" id="integracao">
+          <h2>Integração com SAC via planilha</h2>
+          <div class="meta-grid">
+            <div class="meta-box">
+              <strong>Responsável pelo preenchimento</strong>
+              Equipe de SAC.
+            </div>
+            <div class="meta-box">
+              <strong>Campos preenchidos</strong>
+              Status da nota e número do ticket no arquivo de integração.
+            </div>
+          </div>
+          <p style="margin-top: 16px;">
+            Para notas de devolução, a tratativa fiscal depende do retorno informado pelo SAC. Por isso, o preenchimento do campo <strong>Status</strong> deve seguir exatamente os valores padronizados definidos para a planilha.
+          </p>
+        </section>
+
+        <section class="card content-card" id="status-ref">
+          <h2>Tabela de referência para preenchimento do Status</h2>
+          <p>
+            A tabela abaixo apresenta os valores válidos para o campo <strong>Status</strong> e o respectivo significado operacional de cada opção.
+          </p>
+
+          <div class="highlight info">
+            <strong>Importante:</strong> esta tabela é apenas uma referência de apoio para preenchimento correto da planilha. Ela <strong>não é enviada ao SAC</strong> e não substitui o campo de seleção utilizado no arquivo.
+          </div>
+
+          <div class="table-wrap" style="margin-top: 18px;">
+            <table class="table compact-table">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>NFD validada - Transporte</td>
+                  <td>NFD foi validada e está aguardando coleta.</td>
+                </tr>
+                <tr>
+                  <td>NFD validada - Logística</td>
+                  <td>NFD foi validada e está aguardando solicitação de coleta.</td>
+                </tr>
+                <tr>
+                  <td>NFD não validada</td>
+                  <td>NFD não foi validada pelo time SAC.</td>
+                </tr>
+                <tr>
+                  <td>NFD sem protocolo</td>
+                  <td>Não foi encontrado protocolo referente à NFD.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ul class="bullet-list">
+            <li>Utilize apenas os valores padronizados apresentados nesta referência.</li>
+            <li>O preenchimento incorreto impacta a leitura do fluxo automático no SharePoint.</li>
+            <li>A tabela serve como apoio visual e orientação operacional.</li>
+          </ul>
+        </section>
+
+        <section class="card content-card" id="matriz-sac">
+          <h2>Matriz de decisão do SAC</h2>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Status preenchido pelo SAC</th>
+                  <th>Significado fiscal</th>
+                  <th>Tratativa resultante</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>NFD Validada Transporte</td>
+                  <td>Aguardando coleta da mercadoria.</td>
+                  <td><span class="status-badge wait">Aguardar</span><br />Andamento: Resolvido após entrada</td>
+                </tr>
+                <tr>
+                  <td>NFD Validada Logística</td>
+                  <td>Aguardando solicitação de coleta.</td>
+                  <td><span class="status-badge wait">Aguardar</span><br />Andamento: Resolvido após entrada</td>
+                </tr>
+                <tr>
+                  <td>NFD Não Validada</td>
+                  <td>Ticket aberto, mas com erro na nota ou no processo.</td>
+                  <td><span class="status-badge danger">Manifestar</span></td>
+                </tr>
+                <tr>
+                  <td>NFD Sem Protocolo</td>
+                  <td>Não há registro de atendimento para a nota.</td>
+                  <td><span class="status-badge danger">Manifestar</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card content-card" id="atualizacao">
+          <h2>Processo de atualização</h2>
+          <ol class="flow">
+            <li data-step="1">
+              <strong>Geração da planilha</strong><br />
+              O sistema gera o arquivo de integração para preenchimento pelo SAC.
+            </li>
+            <li data-step="2">
+              <strong>Preenchimento pelo SAC</strong><br />
+              O time informa status, ticket e dados relacionados ao atendimento.
+            </li>
+            <li data-step="3">
+              <strong>Leitura automática do ID</strong><br />
+              O fluxo do SharePoint identifica o ID da nota no arquivo.
+            </li>
+            <li data-step="4">
+              <strong>Atualização da lista principal</strong><br />
+              A lista é atualizada automaticamente com base no retorno recebido.
+            </li>
+          </ol>
+
+          <p style="margin-top: 20px;">
+            <a class="back-button" href="index.html">← Voltar para a página inicial</a>
+          </p>
+        </section>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
